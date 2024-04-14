@@ -309,6 +309,7 @@ h6::before {
     animation: ccc 6s linear infinite;
 }
 
+
 /* ----------------------- */
 
 /* 导航栏居中 魔改 */
@@ -319,6 +320,7 @@ h6::before {
     display: flex;
     flex-wrap:nowrap;
 }
+
 #nav *::after{
     background-color: transparent!important;
 }
