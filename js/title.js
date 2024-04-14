@@ -2,7 +2,8 @@ var OriginTitile = document.title;
 var titleTime;
 document.addEventListener('visibilitychange', function () {
     if (document.hidden) {
-        //离开当前页面时标签显示内容 document.title = ' 跑哪里去了~'; 
+        //离开当前页面时标签显示内容 
+        document.title = ' 跑哪里去了~'; 
         clearTimeout(titleTime);
     } else {
         //返回当前页面时标签显示内容 
