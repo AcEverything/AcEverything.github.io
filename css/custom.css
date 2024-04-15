@@ -144,35 +144,24 @@ div#archive {
 /* 滚动条样式 */
 ::-webkit-scrollbar {
     width: 8px;
-    height: 8px;
+    height: 8px
 }
 
 ::-webkit-scrollbar-track {
-    background-color: rgba(73, 177, 245, 0.2);
     border-radius: 2em;
+    /* background-color: rgba(73, 177, 245, .2); */
 }
 
 ::-webkit-scrollbar-thumb {
-    background-color: var(--theme-color);
-    background-image: -webkit-linear-gradient(45deg,
-            rgba(255, 255, 255, 0.4) 25%,
-            transparent 25%,
-            transparent 50%,
-            rgba(255, 255, 255, 0.4) 50%,
-            rgba(255, 255, 255, 0.4) 75%,
-            transparent 75%,
-            transparent);
-    border-radius: 2em;
+    background-color: rgb(255 255 255 / .3);
+    background-image: -webkit-linear-gradient(45deg, rgba(255, 255, 255, 0.1) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.1) 50%, rgba(255, 255, 255, 0.1) 75%, transparent 75%, transparent);
+    border-radius: 2em
 }
 
 ::-webkit-scrollbar-corner {
-    background-color: transparent;
+    background-color: transparent
 }
 
-::-moz-selection {
-    color: #fff;
-    background-color: var(--theme-color);
-}
 
 /* ----------------------- */
 
@@ -313,37 +302,37 @@ h6::before {
 /* ----------------------- */
 
 /* 导航栏居中 魔改 */
-#nav-right{
-    flex:1 1 auto;
-    justify-content: flex-end;
-    margin-left: auto;
-    display: flex;
-    flex-wrap:nowrap;
+#nav .menus_items {
+    position: absolute;
+    width: fit-content;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
-#nav *::after{
-    background-color: transparent!important;
+#nav *::after {
+    background-color: transparent !important;
 }
 
-.menus_item_child li:not(#sidebar-menus li){
+.menus_item_child li:not(#sidebar-menus li) {
     float: left;
-    border-radius: 6px!important;
-    -webkit-border-radius: 6px!important;
-    -moz-border-radius: 6px!important;
-    -ms-border-radius: 6px!important;
-    -o-border-radius: 6px!important;
+    border-radius: 6px !important;
+    -webkit-border-radius: 6px !important;
+    -moz-border-radius: 6px !important;
+    -ms-border-radius: 6px !important;
+    -o-border-radius: 6px !important;
 }
-.menus_item_child:not(#sidebar-menus ul){
-  /*
+
+.menus_item_child:not(#sidebar-menus ul) {
+    /*
     left:calc(-150%)!important;这是估算值，为了保持元素居中的，如果不合适可以自己调
   改为：*/
-  left:50%;
-  translate:-50%;
+    left: 50%;
+    translate: -50%;
 }
 
-#site-name::before{
+#site-name::before {
     opacity: 0;
-    background-color: var(--lyx-theme)!important;
+    background-color: var(--lyx-theme) !important;
     border-radius: 8px;
     -webkit-border-radius: 8px;
     -moz-border-radius: 8px;
@@ -354,27 +343,124 @@ h6::before {
     -moz-transition: .3s;
     -ms-transition: .3s;
     -o-transition: .3s;
-    position:absolute;
-    top:0!important;
-    right:0!important;
-    width:100%;
-    height:100%;
+    position: absolute;
+    top: 0 !important;
+    right: 0 !important;
+    width: 100%;
+    height: 100%;
     content: "\f015";
     box-shadow: 0 0 5px var(--lyx-theme);
     font-family: "Font Awesome 6 Free";
     text-align: center;
-    color:white;
-    line-height:34px;/*如果有溢出或者垂直不居中的现象微调一下这个参数*/
-    font-size: 18px;/*根据个人喜好*/
+    color: white;
+    line-height: 34px;
+    /*如果有溢出或者垂直不居中的现象微调一下这个参数*/
+    font-size: 18px;
+    /*根据个人喜好*/
 }
-#site-name:hover::before{
+
+#site-name:hover::before {
     opacity: 1;
-    scale:1.03;
+    scale: 1.03;
 }
-#site-name{
+
+#site-name {
     position: relative;
-    font-size: 24px; /*一定要把字体调大点，否则效果惨不忍睹！*/
+    font-size: 24px;
+    /*一定要把字体调大点，否则效果惨不忍睹！*/
 }
-:root{
-    --lyx-theme: #ed709b /*我的主题色*/
+
+:root {
+    --lyx-theme: #ed709b
+        /*我的主题色*/
 }
+
+/* ----------------------- */
+
+/* 版权样式调整 */
+#post .post-copyright {
+    background: var(--icat-card-bg);
+    padding: 1rem 1.3rem;
+    overflow: hidden;
+    border: var(--style-border);
+    border-width: 1px;
+    transition: 0.3s;
+    position: relative;
+    margin: 1.5rem 0px 0.5rem;
+    border-radius: 8px;
+}
+
+#post .post-copyright:before {
+    position: absolute;
+    right: 22px;
+    top: -77px;
+    content: "\e039";
+    font-size: 180px;
+    font-family: "iconfont";
+    color: var(--icat-fontcolor);
+    opacity: 0.1;
+    filter: blur(7px);
+}
+
+/* ----------------------- */
+
+/* 文章卡片擦亮动画 */
+#recent-posts>.recent-post-item .post_cover {
+    position: relative;
+}
+
+#recent-posts>.recent-post-item .post_cover::after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, .5);
+    content: '';
+    -webkit-transition: -webkit-transform .3s;
+    -moz-transition: -moz-transform .3s;
+    -o-transition: -o-transform .3s;
+    -ms-transition: -ms-transform .3s;
+    transition: transform .3s;
+    -webkit-transform: scale3d(2, 1, 1) rotate(60deg) translate3d(15%, -150%, 0);
+    -moz-transform: scale3d(2, 1, 1) rotate(60deg) translate3d(15%, -150%, 0);
+    -o-transform: scale3d(2, 1, 1) rotate(60deg) translate3d(15%, -150%, 0);
+    -ms-transform: scale3d(2, 1, 1) rotate(60deg) translate3d(15%, -150%, 0);
+    transform: scale3d(2, 1, 1) rotate(60deg) translate3d(15%, -150%, 0);
+}
+
+#recent-posts>.recent-post-item .post_cover:hover::after {
+    -webkit-transform: scale3d(2, 1, 1) rotate(60deg) translate3d(0, 130%, 0);
+    -moz-transform: scale3d(2, 1, 1) rotate(60deg) translate3d(0, 130%, 0);
+    -o-transform: scale3d(2, 1, 1) rotate(60deg) translate3d(0, 130%, 0);
+    -ms-transform: scale3d(2, 1, 1) rotate(60deg) translate3d(0, 130%, 0);
+    transform: scale3d(2, 1, 1) rotate(60deg) translate3d(0, 130%, 0);
+}
+
+/* ----------------------- */
+/* 欢迎信息栏样式 */
+#welcome-info {
+    overflow: hidden;
+    --icat-card-welcome: #49b1f5;
+  }
+  #welcome-info .welcome-time {
+    width: 100%;
+    margin: 12px 0 0;
+    display: inline-flex;
+  }
+  #welcome-info .welcome-message {
+    width: 100%;
+    margin-bottom: 8px;
+    display: inline-flex;
+  }
+  #welcome-info .welcome-region {
+    background: var(--icat-background);
+    border: var(--style-border);
+    color: var(--icat-fontcolor);
+    border-radius: 8px;
+    display: inline-flex;
+    align-items: center;
+    padding: 6px 10px;
+    margin: 6px 0;
+  }
+  
