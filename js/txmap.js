@@ -239,17 +239,17 @@ function showWelcome() {
     //根据本地时间切换欢迎语
     let timeChange;
     let date = new Date();
-    if (date.getHours() >= 5 && date.getHours() < 11) timeChange = "<span>🌤️ 早上好，一日之计在于晨</span>";
+    if (date.getHours() >= 5 && date.getHours() < 11) timeChange = "<span>🌤️ 早上好，一日之计在于晨~</span>";
     else if (date.getHours() >= 11 && date.getHours() < 13) timeChange = "<span>☀️ 中午好，记得午休喔~</span>";
-    else if (date.getHours() >= 13 && date.getHours() < 17) timeChange = "<span>🕞 下午好，饮茶先啦！</span>";
+    else if (date.getHours() >= 13 && date.getHours() < 17) timeChange = "<span>🕞 下午好，饮茶先啦~</span>";
     else if (date.getHours() >= 17 && date.getHours() < 19) timeChange = "<span>🚶‍♂️ 即将下班，记得按时吃饭~</span>";
     else if (date.getHours() >= 19 && date.getHours() < 24) timeChange = "<span>🌙 晚上好，夜生活嗨起来！</span>";
-    else timeChange = "<span class='welcome-time'>夜深了，早点休息，少熬夜</span>";
+    else timeChange = "<span class='welcome-time'>夜深了，早点休息，少熬夜~</span>";
 
     try {
         //自定义文本和需要放的位置
         document.getElementById("welcome-info").innerHTML =
-        `<b><center>🎉 欢迎信息 🎉</center>&emsp;&emsp;欢迎来自 <span style="color:var(--theme-color)">${pos}</span> 的小伙伴，${timeChange}您现在距离博主约 <span style="color:var(--theme-color)">${dist}</span> 公里， ${posdesc}</b>`;
+        `<b><center>🎉 欢迎信息 🎉</center>&emsp;&emsp;欢迎来自 <span style="color:var(--theme-color)">${pos}</span> 的小伙伴，${timeChange}您现在距离博主约 <span style="color:var(--theme-color)">${dist}</span> 公里， ${posdesc}。</b>`;
     } catch (err) {
         // console.log("Pjax无法获取#welcome-info元素🙄🙄🙄")
     }
