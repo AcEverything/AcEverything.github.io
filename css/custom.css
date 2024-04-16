@@ -10,13 +10,6 @@
     --AcEverything-white: white;
 }
 
-/* 在线链接服务仅供平台体验和调试使用，平台不承诺服务的稳定性，企业客户需下载字体包自行发布使用并做好备份。 */
-@font-face {
-    font-family: 'iconfont';  /* Project id 4510659 */
-    src: url('//at.alicdn.com/t/c/font_4510659_nwcc52f3owi.woff2?t=1713270492079') format('woff2'),
-         url('//at.alicdn.com/t/c/font_4510659_nwcc52f3owi.woff?t=1713270492079') format('woff'),
-         url('//at.alicdn.com/t/c/font_4510659_nwcc52f3owi.ttf?t=1713270492079') format('truetype');
-  }
 
 /* 首页文章卡片  */
 #recent-posts>.recent-post-item {
@@ -325,50 +318,6 @@ h6::before {
 
 /* ----------------------- */
 /* 主页按钮显示 */
-#blog-info a:hover {
-    background: var(--AcEverything-blog-info-blue);
-    transition: background .3s;
-    border-radius: 8px;
-}
-
-#blog-info a:hover .site-name {
-    color: var(--AcEverything-blog-info-blue) !important;
-    position: relative;
-    text-shadow: 0 0 transparent;
-}
-
-#blog-info a:hover .site-name:after {
-    position: absolute;
-    display: flex;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    content: "&#xe612;";
-    font-family: "iconfont" !important;
-    font-size: 28px;
-    line-height: 1;
-    color: var(--AcEverything-white);
-    justify-content: center;
-    align-items: center;
-}
-
-@media screen and (max-width: 768px) {
-    #blog-info a:hover {
-        background: 0;
-        transition: unset;
-        border-radius: 0;
-    }
-
-    #blog-info a:hover .site-name {
-        color: var(--AcEverything-blog-info-blue) !important;
-        position: relative;
-        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.15);
-    }
-
-    #blog-info a:hover .site-name:after {
-        display: none;
-    }
-}
 
 
 /* ----------------------- */
