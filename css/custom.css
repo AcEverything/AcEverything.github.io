@@ -276,7 +276,8 @@ h6::before {
     translate: -50%;
 }
 
-#site-name::before {
+/* 主页按钮显示 */
+.site-name::before {
     opacity: 0;
     background-color: var(--lyx-theme) !important;
     border-radius: 8px;
@@ -305,19 +306,16 @@ h6::before {
     /*根据个人喜好*/
 }
 
-#site-name:hover::before {
+.site-name:hover::before {
     opacity: 1;
-    scale: 1.03;
+    scale: 1.02;
 }
 
-#site-name {
+.site-name {
     position: relative;
     font-size: 24px;
     /*一定要把字体调大点，否则效果惨不忍睹！*/
 }
-
-/* ----------------------- */
-/* 主页按钮显示 */
 
 
 /* ----------------------- */
