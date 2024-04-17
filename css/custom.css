@@ -411,3 +411,16 @@ h6::before {
     padding: 6px 10px;
     margin: 6px 0;
 }
+
+/* ----------------------- */
+/* Aplayer音乐组件 自动缩进隐藏 */
+
+.aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+    left: -66px !important;
+    /* 默认情况下缩进左侧66px，只留一点箭头部分 */
+  }
+  
+  .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+    left: 0 !important;
+    /* 鼠标悬停是左侧缩进归零，完全显示按钮 */
+  }
