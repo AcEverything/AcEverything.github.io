@@ -1,3 +1,5 @@
+
+/* 右键菜单 */ 
 var selectTextNow = "";
 let rmWidth = document.getElementById("rightMenu").offsetWidth,
     rmHeight = document.getElementById("rightMenu").offsetHeight,
@@ -66,14 +68,15 @@ function addRightMenuClickEvent() {
         btf.snackbarShow("复制成功，复制和转载请标注本文地址");
     });
 
+
     document.getElementById("menu-searchBaidu").addEventListener("click", rm.searchBaidu);
-  
+
     document.getElementById("menu-copylink").addEventListener("click", rm.copyLink);
 
-    // document.getElementById("menu-randomPost").addEventListener("click", function() {
-    //     rm.hideRightMenu();
-    //     toRandomPost();
-    // });
+    document.getElementById("menu-randomPost").addEventListener("click", function() {
+        rm.hideRightMenu();
+        toRandomPost();
+    });
     // document.getElementById("menu-translate").addEventListener("click", rm.translate);
     document.getElementById("menu-asidehide").addEventListener("click", rm.hideAsideBtn);
 }
@@ -96,7 +99,7 @@ window.oncontextmenu = function(e) {
             o = document.querySelector(".rightMenuOther"),
             i = document.querySelector(".rightMenuPlugin"),
             c = document.getElementById("menu-copytext"),
-            d = document.getElementById("menu-search"),
+            // d = document.getElementById("menu-search"),
             s = document.getElementById("menu-searchBaidu"),
             u = document.getElementById("menu-copylink"),
             y = e.target.href,
@@ -108,12 +111,12 @@ window.oncontextmenu = function(e) {
         if (selectTextNow && window.getSelection()) {
             b = true;
             c.style.display = "block";
-            d.style.display = "block";
+            // d.style.display = "block";
             s.style.display = "block";
             p.style.display = "none";
         } else {
             c.style.display = "none";
-            d.style.display = "none";
+            // d.style.display = "none";
             s.style.display = "none";
         }
 
@@ -220,23 +223,6 @@ rm.switchReadMode = function() {
     }
     rm.hideRightMenu();
 },
-rm.switchCommentBarrage = function() {
-    const commentBarrage = document.querySelector(".comment-barrage");
-    if (commentBarrage) {
-        if (commentBarrage.style.display === "block") {
-            commentBarrage.style.display = "none";
-            document.getElementById("menu-commentBarrage").querySelector("span").textContent = "显示热评";
-            document.querySelector("#consoleCommentBarrage").classList.remove("on");
-            localStorage.setItem("commentBarrageSwitch", "false");
-        } else {
-            commentBarrage.style.display = "block";
-            document.getElementById("menu-commentBarrage").querySelector("span").textContent = "关闭热评";
-            document.querySelector("#consoleCommentBarrage").classList.add("on");
-            localStorage.removeItem("commentBarrageSwitch");
-        }
-    }
-    rm.hideRightMenu();
-},
 rm.copyUrl = function(url) {
     const input = document.createElement("input");
     input.id = "copyVal";
@@ -286,18 +272,6 @@ rm.insertAtCaret = function(input, text) {
 rm.pasteText = function() {
     rm.readClipboard();
     rm.hideRightMenu();
-},
-rm.commentText = function (txt) {
-    const inputs = ["#wl-edit", ".el-textarea__inner"];
-    for (let i = 0; i < inputs.length; i++) {
-        let el = document.querySelector(inputs[i]);
-        if (el != null) {
-            el.dispatchEvent(new Event('input', { bubble: true, cancelable: true }));
-            el.value = '> ' + txt.replace(/\n/g, '\n> ') + '\n\n';
-            el.focus();
-            el.setSelectionRange(-1, -1);
-        }
-    }
 },
 rm.searchBaidu = function() {
     btf.snackbarShow("即将跳转到百度搜索", false, 2000);

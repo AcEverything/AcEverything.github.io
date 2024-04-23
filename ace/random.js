@@ -1,0 +1,1 @@
+var posts=["2024/04/13/hello-world/","2024/04/15/Test/"];function toRandomPost(){ window.pjax ? pjax.loadUrl('/'+posts[Math.floor(Math.random()*posts.length)]) : window.open('/'+posts[Math.floor(Math.random()*posts.length)], "_self"); };
