@@ -1,0 +1,367 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Java位运算 | AcEverything's Blog</title><meta name="author" content="AcEverything"><meta name="copyright" content="AcEverything"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="​       凡是位运算符，都是把值先转换成二进制，再进行后续的处理（因为位运算是针对二进制数进行的一种运算，对于十进制这些数值的位运算来说，会先将其转为二进制，再对其进行位运算，之后将运算结果再转为十进制。）   右移&gt;&gt;（相当于除2）左边补符号位 左移&lt;&lt;（相当于乘2）右边补0 无符号右移&gt;&gt;&gt;（相当于除2）左边补0  ^异或运算符  ^异或运算符顾">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java位运算">
+<meta property="og:url" content="https://aceverything.github.io/2024/04/23/Java%E4%BD%8D%E8%BF%90%E7%AE%97/index.html">
+<meta property="og:site_name" content="AcEverything&#39;s Blog">
+<meta property="og:description" content="​       凡是位运算符，都是把值先转换成二进制，再进行后续的处理（因为位运算是针对二进制数进行的一种运算，对于十进制这些数值的位运算来说，会先将其转为二进制，再对其进行位运算，之后将运算结果再转为十进制。）   右移&gt;&gt;（相当于除2）左边补符号位 左移&lt;&lt;（相当于乘2）右边补0 无符号右移&gt;&gt;&gt;（相当于除2）左边补0  ^异或运算符  ^异或运算符顾">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://aceverything-blog.oss-cn-beijing.aliyuncs.com/blogImg/avatar.png">
+<meta property="article:published_time" content="2024-04-23T15:23:36.000Z">
+<meta property="article:modified_time" content="2024-04-23T16:09:21.406Z">
+<meta property="article:author" content="AcEverything">
+<meta property="article:tag" content="Java">
+<meta property="article:tag" content="位运算">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://aceverything-blog.oss-cn-beijing.aliyuncs.com/blogImg/avatar.png"><link rel="shortcut icon" href="/image/favicon.png"><link rel="canonical" href="https://aceverything.github.io/2024/04/23/Java%E4%BD%8D%E8%BF%90%E7%AE%97/index.html"><link rel="preconnect" href="https://cdn.staticfile.org"/><link rel="preconnect" href="//hm.baidu.com"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=4.13.0"><link rel="stylesheet" href="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/font-awesome/6.0.0/css/all.min.css"><link rel="stylesheet" href="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/node-snackbar/0.1.16/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.staticfile.org/fancyapps-ui/4.0.31/fancybox.min.css" media="print" onload="this.media='all'"><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?5f66e9eb269020cacee3fc765c2170c7";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":true,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: true,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":100,"languages":{"author":"作者: AcEverything","link":"链接: ","source":"来源: AcEverything's Blog","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体中文","cht_to_chs":"你已切换为简体中文","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#1f1f1f","position":"top-center"},
+  infinitegrid: {
+    js: 'https://cdn.staticfile.org/egjs-infinitegrid/4.11.1/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: true,
+  islazyload: true,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Java位运算',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-04-24 00:09:21'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const now = new Date()
+          const hour = now.getHours()
+          const isNight = hour <= 6 || hour >= 18
+          if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+          else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><link rel="stylesheet" href="//at.alicdn.com/t/c/font_4510659_fz7xnxtuoa5.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="/css/custom.css" media="defer" onload="this.media='all'"><!-- hexo injector head_end start --><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-footer-beautify@1.0.0/lib/runtime.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiperstyle.css" media="print" onload="this.media='all'"><!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.1.1"></head><body><div id="loading-box" onclick="document.getElementById(&quot;loading-box&quot;).classList.add(&quot;loaded&quot;)"><div class="loading-bg"><div class="loading-img" style="background: url(https://aceverything-blog.oss-cn-beijing.aliyuncs.com/blogImg/avatar_load.jpeg) no-repeat center center; background-size: cover;"></div><div class="loading-image-dot"></div></div></div><script>const preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = 'hidden';
+    document.getElementById('loading-box').classList.remove("loaded")
+  }
+}
+
+preloader.initLoading()
+window.addEventListener('load',()=> { preloader.endLoading() })
+
+if (false) {
+  document.addEventListener('pjax:send', () => { preloader.initLoading() })
+  document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+}</script><script>window.paceOptions = {
+  restartOnPushState: false
+}
+
+document.addEventListener('pjax:send', () => {
+  Pace.restart()
+})
+</script><link rel="stylesheet" href="/css/progress_bar.css"/><script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/pace/1.2.4/pace.min.js"></script><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://aceverything-blog.oss-cn-beijing.aliyuncs.com/blogImg/avatar.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">3</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">4</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-graduation-cap"></i><span> 博文</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/categories/"><i class="fa-fw fa fa-archive"></i><span> 分类</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/archives/"><i class="fa-fw fa fa-folder-open"></i><span> 归档</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 生活</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/shuoshuo/"><i class="fa-fw fa fa-camera-retro"></i><span> 分享</span></a></li><li><a class="site-page child" href="/photos/"><i class="fa-fw fa fa-camera-retro"></i><span> 相册</span></a></li><li><a class="site-page child" href="/music/"><i class="fa-fw fa fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 影视</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/comment/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于笔者</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg fixed" id="page-header" style="background-image: url('https://aceverything-blog.oss-cn-beijing.aliyuncs.com/blogImg/archive_img.jpg')"><nav id="nav"><span id="blog-info"><a href="/" title="AcEverything's Blog"><span class="site-name">AcEverything's Blog</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-graduation-cap"></i><span> 博文</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/categories/"><i class="fa-fw fa fa-archive"></i><span> 分类</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/archives/"><i class="fa-fw fa fa-folder-open"></i><span> 归档</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 生活</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/shuoshuo/"><i class="fa-fw fa fa-camera-retro"></i><span> 分享</span></a></li><li><a class="site-page child" href="/photos/"><i class="fa-fw fa fa-camera-retro"></i><span> 相册</span></a></li><li><a class="site-page child" href="/music/"><i class="fa-fw fa fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 影视</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/comment/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于笔者</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Java位运算</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-04-23T15:23:36.000Z" title="发表于 2024-04-23 23:23:36">2024-04-23</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-04-23T16:09:21.406Z" title="更新于 2024-04-24 00:09:21">2024-04-24</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Java/">Java</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">2.5k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>8分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Java位运算"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p>​       凡是位运算符，都是把值先转换成二进制，再进行后续的处理（因为位运算是针对二进制数进行的一种运算，对于十进制这些数值的位运算来说，会先将其转为二进制，再对其进行位运算，之后将运算结果再转为十进制。）</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://aceverything-blog.oss-cn-beijing.aliyuncs.com/blogImg/image-20240423232559587.png" alt="image-20240423232559587"></p>
+<blockquote>
+<p>右移&gt;&gt;（相当于除2）左边补符号位</p>
+<p>左移&lt;&lt;（相当于乘2）右边补0</p>
+<p>无符号右移&gt;&gt;&gt;（相当于除2）左边补0</p>
+</blockquote>
+<h4 id="异或运算符"><a href="#异或运算符" class="headerlink" title="^异或运算符"></a>^异或运算符</h4><blockquote>
+<p> ^异或运算符顾名思义，异就是不同</p>
+<p> 运算规则：两个二进制位上的数字如果相同，则运算结果为0；</p>
+<p> 如果两个二进制位上的数字不相同，则运算结果为1。</p>
+</blockquote>
+<p>面试题：不使用第三个变量交换两个数字</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Demo</span> &#123;</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">x</span> <span class="operator">=</span><span class="number">10</span>;<span class="type">int</span> <span class="variable">y</span> <span class="operator">=</span> <span class="number">20</span>;</span><br><span class="line">        <span class="comment">//加减法;缺点，如果数据大可能会出现溢出</span></span><br><span class="line">        x=x+y;</span><br><span class="line">        y=x-y;</span><br><span class="line">        x=x-y;</span><br><span class="line">        <span class="comment">//异或法</span></span><br><span class="line">        x=x^y;</span><br><span class="line">        y=x^y;</span><br><span class="line">        x=x^y;</span><br><span class="line">        System.out.println(<span class="string">&quot;交换后&quot;</span>+x+<span class="string">&quot; &quot;</span>+y);</span><br><span class="line">     &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>规律：</p>
+<ol>
+<li>交换律：a ^ b ^ c &lt;&#x3D;&gt; a ^ c ^ b</li>
+<li>任何数于0异或为任何数 0 ^ n &#x3D;&gt; n</li>
+<li>相同的数异或为0: n ^ n &#x3D;&gt; 0</li>
+</ol>
+<h4 id=""><a href="#" class="headerlink" title="&lt;&lt;左移运算符"></a><strong>&lt;&lt;左移运算符</strong></h4><blockquote>
+<p> 5&lt;&lt;2的意思为5的二进制位往左挪两位，右边补0</p>
+<p> 5的二进制位是0000 0101 ， 就是把有效值101往左挪两位就是0001 0100 ，正数左边第一位补0，负数补1，等于乘于2的n次方，十进制位是5*2^2&#x3D;20</p>
+<p>乘以2的N次方：</p>
+<p> 左移运算有乘以2的N次方的效果。一个数向左移动1位，就相当于乘以2的1次方，移动两位就相当于乘以2的2次方，也就是乘以4。</p>
+<p> 位移操作在实际运算时远远快于乘法操作，所以在某些对运算速度要求非常高的场合，可以考虑用左移代替乘以2的N次方的乘法操作。</p>
+</blockquote>
+<p> 注意三个细节：</p>
+<ol>
+<li>首先：位移操作同取反操作一样，并不能改变变量本身的值，所能改变的仅是存储在操作数栈中那个数据的值</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Demo</span> &#123;    </span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;            </span><br><span class="line">        <span class="type">int</span> <span class="variable">a</span> <span class="operator">=</span> <span class="number">5</span>;            </span><br><span class="line">        System.out.println(a&lt;&lt;<span class="number">2</span>); <span class="comment">//20  左移2位结果为20           </span></span><br><span class="line">        System.out.println(a);  <span class="comment">//5 但a的值没有改变        </span></span><br><span class="line">      &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li><p>其次：当位移的位数很多时，导致最左边的符号位发生变化，就不再具有乘以2的N次方的效果了。比如十进制的5转换为补码形式是：前面29个0最后3位是101，如果移动29位，那么最前面的符号位就变成了1，此时运算的结果就成为了一个负数，不再是5乘以2的29次方的乘法结果。</p>
+</li>
+<li><p>如果位移数超过31，则虚拟机会对位移数按连续减去32，直到得到一个小于32并且大于等于0的数，然后以这个数作为最终的位移数。例如：对int型变量进行位移97位的操作，虚拟机会首先对97连续减去3个32，最终得到数字1，实际进行位移运算时只对变量位移1位。而对于long类型的数据而言，最多支持63位的位移运算，如果位移数超过63，则连续减去64，以最终得到的小于64并且大于等于0的数作为位移数。 数字5左移32位的倍数还是数字本身。</p>
+</li>
+</ol>
+<h4 id="右移运算符"><a href="#右移运算符" class="headerlink" title="&gt;&gt;右移运算符"></a><strong>&gt;&gt;右移运算符</strong></h4><blockquote>
+<p>右移运算分为两种，分别是带符号右移和无符号右移。首先我们来说说带符号右移运算符。带符号右移运算符的写法是”&gt;&gt;“，与左移运算符的方向恰好相反。所谓带符号右移就是指当二进制串向右边移动以后，左边空出的位用”符号位上的数字”填充，说的更直白一点，如果是正数，二进制串右移的时候用0来填充左边的空位，而对于负数而言，右移的时候用1来填充左边的空位。</p>
+</blockquote>
+<p>类似”除以2的N次方的效果</p>
+<p> 注意：这里说的是“类似”除以2的N次方的效果，为什么要加上“类似”两个字呢？</p>
+<p> 就是因为对于正数而言，带符号右移之后产生的数字确实等于除以2的N次方，比如说我们把N的值设为3，对于正15，带符号右移3位的结果是1，这个结果与“15除以2的3次方”的结果是相同的。</p>
+<p> <strong>但是对于负数而言，带符号右移的效果分为两种情况</strong>，我们分别来讨论。</p>
+<p> <strong>如果这个负数是“2的N次方”的整数倍，</strong>那么带符号右移N位的效果也等于除以2的N次方。举个例子：我们还是把N的值设为3，如果对于“-16”来说，它是“2的3次方”的整数倍，那么带符号右移3位的结果是-2，这个结果相当于“-16除以2的3次方”。</p>
+<p> <strong>而如果这个负数不是“2的N次方”的整数倍</strong>，那么右移N位之后，是在除以2的N次方的结果之上还要减去1。比如，对于-15来说，它不是“2的3次方”的整数倍，那么带符号右移3位的结果是-2，这个运算结果其实就是“-15被2的3次方整除再减去1”。小伙伴们也可以用其他负整数来验证一下这个结论。因为并非每个负整数带符号右移的结果都等于除以“2的N次方”，所以我们才在文中添加了“类似”这两个字。</p>
+<p> 带符号右移的操作可以保证移动之前和移动之后数字的正负属性不变，原来是正数，不管移动多少位，移动之后还是正数，原来是负数，移动之后还是负数。</p>
+<blockquote>
+<p>小结论：</p>
+<p>另外，我们还可以继续深挖一下这个特性，从而得到一个结论：对于任何一个byte、short或者int类型的数据而言，带符号右移31位之后，得到的必然是0或者是-1。对于long类型的数据而言，带符号右移63位之后，得到的也必然是0或者是-1。</p>
+<p>能够得出这个结论的依据也很简单，就是因为对于byte、short和int类型的变量而言，如果是正数，带符号右移31位之后产生的二进制串必然全部是0，转换成对应的十进制数就是0；而对于负数而言，带符号右移31位之后产生的二进制串必然全部是1，转换成十进制数就是-1。对于long类型的数据，带符号右移63位也具有相同效果。</p>
+</blockquote>
+<h4 id="无符号右移运算符"><a href="#无符号右移运算符" class="headerlink" title="&gt;&gt;&gt;无符号右移运算符"></a><strong>&gt;&gt;&gt;无符号右移运算符</strong></h4><blockquote>
+<p>无符号右移的运算规则与有符号右移的运算规则差别就在于：无符号右移在二进制串移动之后，空位由0来补充，与符号位是0还是1毫无关系。</p>
+<p> 对于正数而言，无符号右移和带符号右移没有什么区别，而对于负数而言，经过无符号右移会产生一个正数，因为最左边的符号位被0填充了。</p>
+</blockquote>
+<ol>
+<li>正数无符号右移</li>
+</ol>
+<blockquote>
+<p>无符号右移运算符和右移运算符的主要区别在于负数的计算，因为无符号右移是高位补0，移多少位补多少个0。</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//15的二进制位是0000 1111 ， 右移2位0000 0011，结果为3</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Demo</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="comment">/**</span></span><br><span class="line"><span class="comment">        *     0000 1111</span></span><br><span class="line"><span class="comment">        *   ---------------</span></span><br><span class="line"><span class="comment">        *     0000 0011</span></span><br><span class="line"><span class="comment">        */</span></span><br><span class="line">        System.out.println(<span class="number">15</span>&gt;&gt;&gt;<span class="number">2</span>); <span class="comment">// 3</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>负数无符号右移</li>
+</ol>
+<blockquote>
+<p>-6的二进制是6的二进制取反再加1,</p>
+<p>6的二进制也就是0000 0000 0000 0000 0000 0000 0000 0110，</p>
+<p>取反后加1为1111 1111 1111 1111 1111 1111 1111 1010，</p>
+<p>右移三位0001 1111 1111 1111 1111 1111 1111 1111</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Demo</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        System.out.println(-<span class="number">6</span>&gt;&gt;&gt;<span class="number">3</span>); <span class="comment">// 536870911</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="常见用法"><a href="#常见用法" class="headerlink" title="常见用法"></a><strong>常见用法</strong></h4><ol>
+<li><strong>位运算实现乘除法:</strong></li>
+</ol>
+<p> 通常如果需要乘以或除以2的n次方，都可以用移位的方法代替</p>
+<ol start="2">
+<li><strong>位运算判断奇偶数</strong></li>
+</ol>
+<p>通过二进制判断奇偶：<strong>该数二进制的最后一位是0的话那么就为偶数；是1的话就为奇数</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(<span class="number">1</span> == (<span class="number">1</span> &amp; i)) ? 奇数 : 偶数</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li><strong>位运算改变正负性</strong></li>
+</ol>
+<p> 正数变成负数，负数变成正数</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">   * 将-11变成11</span></span><br><span class="line"><span class="comment">   * 1111 0101(二进制) –取反-&gt; 0000 1010(二进制) –加1-&gt; 0000 1011(二进制)</span></span><br><span class="line"><span class="comment">   * 将11变成-11</span></span><br><span class="line"><span class="comment">   * 0000 1011(二进制) –取反-&gt; 0000 0100(二进制) –加1-&gt; 1111 0101(二进制)</span></span><br><span class="line"><span class="comment">   * 因此变换符号只需要取反后加1即可</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line"><span class="type">int</span> <span class="title function_">SignReversal</span><span class="params">(<span class="type">int</span> a)</span>  &#123;  </span><br><span class="line">    <span class="keyword">return</span> ~a + <span class="number">1</span>;  </span><br><span class="line">&#125;  </span><br></pre></td></tr></table></figure>
+
+<ol start="4">
+<li><strong>求绝对值</strong></li>
+</ol>
+<p>对应的负数改变为正数，就是取反+1，正数不变</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">my_abs</span><span class="params">(<span class="type">int</span> a)</span> </span>&#123;    </span><br><span class="line">  <span class="type">int</span> i = a &gt;&gt; <span class="number">31</span>;    </span><br><span class="line">  <span class="keyword">return</span> i == <span class="number">0</span> ? a : (~a + <span class="number">1</span>); </span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+
+<p> 对于任何数，与0异或都会保持不变，与-1即0xFFFFFFFF异或就相当于取反。因此，a与i异或后再减i（因为i为0或-1，所以减i即是要么加0要么加1）也可以得到绝对值。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">my_abs</span><span class="params">(<span class="type">int</span> a)</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> i = a &gt;&gt; <span class="number">31</span>;</span><br><span class="line">    <span class="keyword">return</span> ((a ^ i) - i);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="5">
+<li><strong>十进制与二进制转换练习</strong></li>
+</ol>
+<ul>
+<li>十进制数10转为二进制</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">10除以2 得5 余数为 0</span><br><span class="line">再拿刚才的5除以2得2 余数为1</span><br><span class="line">2除以2得1 余数为0</span><br><span class="line">1除以2 直接余数为1</span><br><span class="line">那么就为1010</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>二进制数1110转为十进制</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">1011</span><br><span class="line">这是个二进制数，所以每个数都有2的影子。所以我们从右边数，</span><br><span class="line">1转为 1*2^0等于1</span><br><span class="line">1转为 1*2^1等于2</span><br><span class="line">0转为 0*2^2等于0</span><br><span class="line">1转为1*2^3等于8</span><br><span class="line">1+2+0+8=11</span><br></pre></td></tr></table></figure>
+
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://aceverything.github.io">AcEverything</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://aceverything.github.io/2024/04/23/Java%E4%BD%8D%E8%BF%90%E7%AE%97/">https://aceverything.github.io/2024/04/23/Java%E4%BD%8D%E8%BF%90%E7%AE%97/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://aceverything.github.io" target="_blank">AcEverything's Blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Java/">Java</a><a class="post-meta__tags" href="/tags/%E4%BD%8D%E8%BF%90%E7%AE%97/">位运算</a></div><div class="post_share"><div class="social-share" data-image="https://aceverything-blog.oss-cn-beijing.aliyuncs.com/blogImg/avatar.png" data-sites="wechat,weibo,qq"></div><link rel="stylesheet" href="https://lib.baomitu.com/social-share.js/1.0.16/css/share.min.css" media="print" onload="this.media='all'"><script src="https://lib.baomitu.com/social-share.js/1.0.16/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2024/04/15/Test/" title="Test"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://aceverything-blog.oss-cn-beijing.aliyuncs.com/blogImg/archive_img.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Test</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://aceverything-blog.oss-cn-beijing.aliyuncs.com/blogImg/avatar.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">AcEverything</div><div class="author-info__description">Code Change World</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">3</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">4</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/AcEverything"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/AcEverything" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:AcEverything6@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div><script type="text/javascript" src="/js/txmap.js"></script><div id="welcome-info"></div><script type="text/javascript">var longitude = '106.109138';
+var Latitude = '38.50036';
+var txkey = 'D4DBZ-AFWCQ-EPO5Z-BCVZH-SYMWJ-7HBJZ'
+var ipLoacation;
+window.onload = () => {
+  welcometxmap()
+};
+//- document.addEventListener("pjax:complete", welcometxmap())</script></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BC%82%E6%88%96%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="toc-number">1.</span> <span class="toc-text">^异或运算符</span></a></li><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-number">2.</span> <span class="toc-text">&lt;&lt;左移运算符</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%B3%E7%A7%BB%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="toc-number">3.</span> <span class="toc-text">&gt;&gt;右移运算符</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%97%A0%E7%AC%A6%E5%8F%B7%E5%8F%B3%E7%A7%BB%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="toc-number">4.</span> <span class="toc-text">&gt;&gt;&gt;无符号右移运算符</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81%E7%94%A8%E6%B3%95"><span class="toc-number">5.</span> <span class="toc-text">常见用法</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/04/23/Java%E4%BD%8D%E8%BF%90%E7%AE%97/" title="Java位运算">Java位运算</a><time datetime="2024-04-23T15:23:36.000Z" title="发表于 2024-04-23 23:23:36">2024-04-23</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/04/15/Test/" title="Test"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://aceverything-blog.oss-cn-beijing.aliyuncs.com/blogImg/archive_img.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Test"/></a><div class="content"><a class="title" href="/2024/04/15/Test/" title="Test">Test</a><time datetime="2024-04-15T09:25:11.000Z" title="发表于 2024-04-15 17:25:11">2024-04-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/04/13/hello-world/" title="Hello World"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://aceverything-blog.oss-cn-beijing.aliyuncs.com/blogImg/index1.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Hello World"/></a><div class="content"><a class="title" href="/2024/04/13/hello-world/" title="Hello World">Hello World</a><time datetime="2024-04-13T00:00:00.000Z" title="发表于 2024-04-13 08:00:00">2024-04-13</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">Hi, welcome to my blog!</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="chat-btn" type="button" title="聊天"><i class="fas fa-sms"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div class="js-pjax"><div id="rightMenu"><div class="rightMenu-group rightMenu-small"><div class="rightMenu-item" id="menu-backward"><i class="iconfont icon-zuojiantou"></i></div><div class="rightMenu-item" id="menu-forward"><i class="iconfont icon-youjiantou"></i></div><div class="rightMenu-item" id="menu-refresh"><i class="iconfont icon-refresh"></i></div><div class="rightMenu-item" id="menu-darkmode"><i class="iconfont icon-yejianmoshishenyemoshiyueliang"></i></div></div><div class="rightMenu-group rightMenu-line rightMenuPost"><div class="rightMenu-item" id="menu-reading"><i class="iconfont icon-shuba"></i><span>阅读模式</span></div><div class="rightMenu-item" id="menu-postlink"><i class="iconfont icon-fuzhi"></i><span>复制本文地址</span></div></div><div class="rightMenu-group rightMenu-line rightMenuPlugin"><div class="rightMenu-item" id="menu-copytext"><i class="iconfont icon-fuzhi"></i><span>复制内容</span></div><div class="rightMenu-item" id="menu-searchBaidu"><i class="iconfont icon-baidu"></i><span>百度搜索</span></div><div class="rightMenu-item" id="menu-copylink"><i class="iconfont icon-link"></i><span>复制链接地址</span></div></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item" id="menu-randomPost"><i class="iconfont icon-suijibofang01"></i><span>随便逛逛</span></a><div class="rightMenu-item" id="menu-asidehide"><i class="iconfont icon-_cebianlankongzhi"></i><span>边栏控制</span></div></div></div><div id="rightMenu-mask"></div></div><div><script src="https://cdn.staticfile.org/hexo-theme-butterfly/4.13.0/js/utils.min.js"></script><script src="https://cdn.staticfile.org/hexo-theme-butterfly/4.13.0/js/main.min.js"></script><script src="https://cdn.staticfile.org/fancyapps-ui/4.0.31/fancybox.umd.min.js"></script><script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/instant.page/5.1.0/instantpage.min.js" type="module"></script><script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/vanilla-lazyload/17.3.1/lazyload.iife.min.js"></script><script src="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/node-snackbar/0.1.16/snackbar.min.js"></script><div class="js-pjax"></div><div  class="aplayer " data-id="8164170333" data-server="netease" data-type="playlist" data-listfolded="true"  data-fixed="true" data-mini="true" data-autoplay="false"> </div><script async src="/js/title.js"></script><script src="/ace/random.js"></script><script async src="https://aceverything-blog.oss-cn-beijing.aliyuncs.com/blogJs/grayscale.js"></script><script defer async type="text/javascript" src="/js/rightmenu.js"></script><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="https://cdnjs.cloudflare.com/ajax/libs/butterfly-extsrc/1.1.3/canvas-nest.min.js"></script><script src="https://npm.elemecdn.com/butterfly-extsrc@1.1.3/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script id="click-show-text" src="https://npm.elemecdn.com/butterfly-extsrc@1.1.3/dist/click-show-text.min.js" data-mobile="false" data-text="自由,平等,公正,法治,爱国,敬业,诚信,友善,富强,民主,文明,和谐" data-fontsize="15px" data-random="false" async="async"></script><link rel="stylesheet" href="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/aplayer/1.10.1/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/aplayer/1.10.1/APlayer.min.js"></script><script src="https://cdn1.tianli0.top/npm/js-heo@1.0.12/metingjs/Meting.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="https://cdn.staticfile.org/hexo-theme-butterfly/4.13.0/js/search/local-search.min.js"></script></div></div><!-- hexo injector body_end start --><script data-pjax>
+  function butterfly_footer_beautify_injector_config(){
+    var parent_div_git = document.getElementById('footer-wrap');
+    var item_html = '<p id="ghbdages"><a class="github-badge" target="_blank" href="https://hexo.io/" style="margin-inline:5px" data-title="博客框架为Hexo_v7.1.1" title=""><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Frame-Hexo-blue?style=flat&amp;logo=hexo" alt=""/></a><a class="github-badge" target="_blank" href="https://butterfly.js.org/" style="margin-inline:5px" data-title="主题版本Butterfly_v4.13.0" title=""><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Theme-Butterfly-6513df?style=flat&amp;logo=bitdefender" alt=""/></a><a class="github-badge" target="_blank" href="https://www.jsdelivr.com/" style="margin-inline:5px" data-title="本站暂未静态资源提供CDN加速" title=""><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/CDN-NoCDN-orange?style=flat&amp;logo=jsDelivr" alt=""/></a><a class="github-badge" target="_blank" href="https://beian.miit.gov.cn/#/Integrated/index" style="margin-inline:5px" data-title="本站未进行备案" title=""><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/萌ICP备-202400001号-e1d492?style=flat" alt=""/></a><a class="github-badge" target="_blank" href="https://github.com/" style="margin-inline:5px" data-title="本站项目由Github托管" title=""><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Source-Github-d021d6?style=flat&amp;logo=GitHub" alt=""/></a><a class="github-badge" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" style="margin-inline:5px" data-title="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可" title=""><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Copyright-BY--NC--SA%204.0-d42328?style=flat&amp;logo=Claris" alt=""/></a></p>';
+    console.log('已挂载butterfly_footer_beautify')
+    parent_div_git.insertAdjacentHTML("beforeend",item_html)
+    }
+  var elist = 'null'.split(',');
+  var cpage = location.pathname;
+  var epage = 'all';
+  var flag = 0;
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_footer_beautify_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_footer_beautify_injector_config();
+  }
+  </script><script data-pjax>
+  function butterfly_swiper_injector_config(){
+    var parent_div_git = document.getElementById('recent-posts');
+    var item_html = '<div class="recent-post-item" style="height: auto;width: 100%"><div class="blog-slider swiper-container-fade swiper-container-horizontal" id="swiper_container"><div class="blog-slider__wrp swiper-wrapper" style="transition-duration: 0ms;"><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" href="2024/04/13/hello-world/" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://aceverything-blog.oss-cn-beijing.aliyuncs.com/blogImg/index1.jpg" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-04-13</span><a class="blog-slider__title" href="2024/04/13/hello-world/" alt="">Hello World</a><div class="blog-slider__text">hexo blog start!</div><a class="blog-slider__button" href="2024/04/13/hello-world/" alt="">详情   </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" href="2024/04/15/Test/" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://aceverything-blog.oss-cn-beijing.aliyuncs.com/blogImg/archive_img.jpg" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-04-15</span><a class="blog-slider__title" href="2024/04/15/Test/" alt="">Test</a><div class="blog-slider__text">再怎么看我也不知道怎么描述它的啦！</div><a class="blog-slider__button" href="2024/04/15/Test/" alt="">详情   </a></div></div></div><div class="blog-slider__pagination swiper-pagination-clickable swiper-pagination-bullets"></div></div></div>';
+    console.log('已挂载butterfly_swiper')
+    parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+    }
+  var elist = 'undefined'.split(',');
+  var cpage = location.pathname;
+  var epage = '/';
+  var flag = 0;
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_swiper_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_swiper_injector_config();
+  }
+  </script><script defer src="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper.min.js"></script><script defer data-pjax src="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper_init.js"></script><!-- hexo injector body_end end --></body></html>
