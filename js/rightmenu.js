@@ -202,13 +202,14 @@ rm.switchReadMode = function() {
         body.classList.add('read-mode');
         const newButton = document.createElement('button');
         newButton.type = 'button';
-        newButton.className = 'iconfont icat-exit-mode exit-readmode';
+        newButton.className = 'fas fa-sign-out-alt exit-readmode';
         body.appendChild(newButton);
 
         const clickFn = () => {
             body.classList.remove('read-mode');
             newButton.remove();
             newButton.removeEventListener('click', clickFn);
+            document.getElementById("menu-reading").querySelector("span").textContent = "阅读模式";
         };
 
         newButton.addEventListener('click', clickFn);
