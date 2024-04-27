@@ -1,3 +1,22 @@
+/* 标题样式 title.js */
+var OriginTitile = document.title;
+var titleTime;
+document.addEventListener('visibilitychange', function () {
+    if (document.hidden) {
+        //离开当前页面时标签显示内容 
+        document.title = ' 跑哪里去了~'; 
+        clearTimeout(titleTime);
+    } else {
+        //返回当前页面时标签显示内容 
+        document.title = ' 抓到你啦～';
+        //两秒后变回正常标题 
+        titleTime = setTimeout(function () { document.title = OriginTitile; }, 2000);
+    }
+});
+
+/*---------------------*/
+
+/* 纪念日---grayscale */
 if (PublicSacrificeDay()) {
     document.getElementsByTagName("html")[0].setAttribute("style", "filter:gray !important;filter:grayscale(100%);-webkit-filter:grayscale(100%);-moz-filter:grayscale(100%);-ms-filter:grayscale(100%);-o-filter:grayscale(100%);");
 }
@@ -11,7 +30,7 @@ function PublicSacrificeDay() {
     //2010年8月7日，甘肃舟曲特大泥石流
     //1976年9月9日，毛主席逝世
     //1931年9月18日，九一八事变
-    //烈士纪念日为每年9月30日
+    //9月30日 烈士纪念日为每年
     //1950年10月25日，抗美援朝纪念日
     //1937年12月13日，南京大屠杀
     var currentdate = new Date();

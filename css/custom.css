@@ -165,14 +165,6 @@ div#archive:hover,
     background: var(--trans-dark);
 }
 
-/* 夜间模式页脚页头遮罩透明 */
-[data-theme="dark"] #footer::before {
-    background: transparent !important;
-}
-
-[data-theme="dark"] #page-header::before {
-    background: transparent !important;
-}
 
 /* 阅读模式 */
 .read-mode #aside-content .card-widget {
@@ -385,7 +377,7 @@ h6::before {
     translate: -50%;
 }
 
-/* 主页按钮显示 */
+/* 主页按钮显示  */
 .site-name::before {
     opacity: 0;
     background-color: var(--lyx-theme) !important;
