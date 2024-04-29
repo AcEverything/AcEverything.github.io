@@ -1,3 +1,4 @@
+var ipLoacation;
 function welcometxmap() {
     //请求数据
     ipLoacation = window.saveToLocal.get('ipLocation');
@@ -7,7 +8,7 @@ function welcometxmap() {
     } else {
         // 数据已过期或不存在
         var script = document.createElement('script');
-        var url = `https://apis.map.qq.com/ws/location/v1/ip?key=${txkey}&output=jsonp`;
+        var url = `https://apis.map.qq.com/ws/location/v1/ip?key=D4DBZ-AFWCQ-EPO5Z-BCVZH-SYMWJ-7HBJZ&output=jsonp`;
         script.src = url;
         window.QQmap = function (data) {
             ipLoacation = data;
@@ -37,7 +38,7 @@ function getDistance(e1, n1, e2, n2) {
 }
 
 function showWelcome() {
-    let dist = getDistance(longitude, Latitude, ipLoacation.result.location.lng, ipLoacation.result.location.lat);
+    let dist = getDistance(106.109138, 38.500360, ipLoacation.result.location.lng, ipLoacation.result.location.lat);
     let pos = ipLoacation.result.ad_info.nation;
     let ip;
     let posdesc;
@@ -254,3 +255,6 @@ function showWelcome() {
         // console.log("Pjax无法获取#welcome-info元素🙄🙄🙄")
     }
 }
+window.onload = welcometxmap;
+// 如果使用了pjax在加上下面这行代码
+// document.addEventListener('pjax:complete', welcometxmap);
