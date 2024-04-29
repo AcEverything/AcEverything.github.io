@@ -1,3 +1,5 @@
+var ipLoacation;
+
 function getDistance(e1, n1, e2, n2) {
     const R = 6371
     const { sin, cos, asin, PI, hypot } = Math
@@ -14,10 +16,12 @@ function getDistance(e1, n1, e2, n2) {
     return Math.round(r);
 }
 
-function showWelcome() {
+function welcometxmap() {
     //请求数据
-    let ipLoacation = window.saveToLocal.get('ipLocation');
-    if (!ipLoacation) {
+    ipLoacation = window.saveToLocal.get('ipLocation');
+    if (ipLoacation) {
+        showWelcome();
+    }else {
         // 数据已过期或不存在
         var script = document.createElement('script');
         var url = `https://apis.map.qq.com/ws/location/v1/ip?key=D4DBZ-AFWCQ-EPO5Z-BCVZH-SYMWJ-7HBJZ&output=jsonp`;
@@ -28,16 +32,19 @@ function showWelcome() {
             window.saveToLocal.set('ipLocation', ipLoacation, 1);
             document.body.removeChild(script);
             delete window.QQmap;
+            showWelcome();
         };
         document.body.appendChild(script);
     }
-    if (!ipLoacation || !ipLoacation.result) {
-        console.log(ipLoacation)
-        ipLoacation = window.saveToLocal.get("ipLocation");
-        console.log(ipLoacation)
-    }
-    console.log(ipLoacation)
-    let dist = getDistance(106.15652, 38.49589, ipLoacation.result.location.lng, ipLoacation.result.location.lat);
+
+}
+
+function showWelcome() {
+    // 解决首次访问时ipLoacation属性未完成赋值
+    // if (!ipLoacation || !ipLoacation.result) {
+    //     ipLoacation = window.saveToLocal.get('ipLocation');
+    // }
+    let dist = getDistance(106.109138, 38.500360, ipLoacation.result.location.lng, ipLoacation.result.location.lat);
     let pos = ipLoacation.result.ad_info.nation;
     let ip;
     let posdesc;
@@ -249,11 +256,11 @@ function showWelcome() {
     try {
         //自定义文本和需要放的位置
         document.getElementById("welcome-info").innerHTML =
-            `<b><center>🎉 欢迎信息 🎉</center>&emsp;&emsp;欢迎来自 <span style="color:var(--theme-color)">${pos}</span> 的小伙伴，${timeChange}您现在距离博主约 <span style="color:var(--theme-color)">${dist}</span> 公里， ${posdesc}。</b>`;
+        `<b><center>🎉 欢迎信息 🎉</center>&emsp;&emsp;欢迎来自 <span style="color:var(--theme-color)">${pos}</span> 的小伙伴，${timeChange}您现在距离博主约 <span style="color:var(--theme-color)">${dist}</span> 公里， ${posdesc}。</b>`;
     } catch (err) {
         // console.log("Pjax无法获取#welcome-info元素🙄🙄🙄")
     }
 }
-window.onload = showWelcome;
+window.onload = welcometxmap;
 // 如果使用了pjax在加上下面这行代码
-document.addEventListener('pjax:complete', showWelcome);
+document.addEventListener('pjax:complete', welcometxmap);
