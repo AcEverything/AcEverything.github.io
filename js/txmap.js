@@ -32,8 +32,11 @@ function showWelcome() {
         document.body.appendChild(script);
     }
     if (!ipLoacation || !ipLoacation.result) {
-        ipLoacation =  window.saveToLocal.get("ipLocation");
+        console.log(ipLoacation)
+        ipLoacation = window.saveToLocal.get("ipLocation");
+        console.log(ipLoacation)
     }
+    console.log(ipLoacation)
     let dist = getDistance(106.15652, 38.49589, ipLoacation.result.location.lng, ipLoacation.result.location.lat);
     let pos = ipLoacation.result.ad_info.nation;
     let ip;
