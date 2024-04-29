@@ -1,5 +1,3 @@
-var ipLoacation;
-
 function getDistance(e1, n1, e2, n2) {
     const R = 6371
     const { sin, cos, asin, PI, hypot } = Math
@@ -8,7 +6,6 @@ function getDistance(e1, n1, e2, n2) {
         n *= PI / 180
         return { x: cos(n) * cos(e), y: cos(n) * sin(e), z: sin(n) }
     }
-
     let a = getPoint(e1, n1)
     let b = getPoint(e2, n2)
     let c = hypot(a.x - b.x, a.y - b.y, a.z - b.z)
@@ -18,11 +15,8 @@ function getDistance(e1, n1, e2, n2) {
 
 function welcometxmap() {
     //请求数据
-    ipLoacation = window.saveToLocal.get('ipLocation');
-    // console.log("ipLoacation", ipLoacation)
-    if (ipLoacation) {
-        // 使用 ipLocation
-    } else {
+    let ipLoacation = window.saveToLocal.get('ipLocation');
+    if (!ipLoacation) {
         // 数据已过期或不存在
         var script = document.createElement('script');
         var url = `https://apis.map.qq.com/ws/location/v1/ip?key=D4DBZ-AFWCQ-EPO5Z-BCVZH-SYMWJ-7HBJZ&output=jsonp`;
@@ -36,10 +30,11 @@ function welcometxmap() {
         };
         document.body.appendChild(script);
     }
-    showWelcome();
+    showWelcome(ipLoacation);
 }
 
-function showWelcome() {
+function showWelcome(ipLoacation) {
+    // 解决首次访问时ipLoacation属性未完成赋值
     if (!ipLoacation || !ipLoacation.result) {
         ipLoacation = window.saveToLocal.get('ipLocation');
     }
