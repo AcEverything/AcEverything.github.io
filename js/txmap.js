@@ -31,7 +31,10 @@ function showWelcome() {
         };
         document.body.appendChild(script);
     }
-    let dist = getDistance(106.109138, 38.500360, ipLoacation.result.location.lng, ipLoacation.result.location.lat);
+    if (!ipLoacation || !ipLoacation.result) {
+        ipLoacation =  window.saveToLocal.get("ipLocation");
+    }
+    let dist = getDistance(106.15652, 38.49589, ipLoacation.result.location.lng, ipLoacation.result.location.lat);
     let pos = ipLoacation.result.ad_info.nation;
     let ip;
     let posdesc;
