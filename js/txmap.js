@@ -1,5 +1,6 @@
-var ipLoacation;
+
 function welcometxmap() {
+    let ipLoacation;
     //请求数据
     ipLoacation = window.saveToLocal.get('ipLocation');
     // console.log("ipLoacation", ipLoacation)
@@ -19,7 +20,7 @@ function welcometxmap() {
         };
         document.body.appendChild(script);
     }
-    showWelcome();
+    showWelcome(ipLoacation);
 }
 function getDistance(e1, n1, e2, n2) {
     const R = 6371
@@ -37,7 +38,7 @@ function getDistance(e1, n1, e2, n2) {
     return Math.round(r);
 }
 
-function showWelcome() {
+function showWelcome(ipLoacation) {
     let dist = getDistance(106.109138, 38.500360, ipLoacation.result.location.lng, ipLoacation.result.location.lat);
     let pos = ipLoacation.result.ad_info.nation;
     let ip;
