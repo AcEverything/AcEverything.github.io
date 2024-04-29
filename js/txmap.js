@@ -260,4 +260,4 @@ function showWelcome() {
 }
 window.onload = welcometxmap;
 // 如果使用了pjax在加上下面这行代码
-// document.addEventListener('pjax:complete', welcometxmap);
+document.addEventListener('pjax:complete', welcometxmap);
