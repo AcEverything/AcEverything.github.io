@@ -1,5 +1,4 @@
 var ipLoacation;
-
 function getDistance(e1, n1, e2, n2) {
     const R = 6371
     const { sin, cos, asin, PI, hypot } = Math
@@ -8,7 +7,6 @@ function getDistance(e1, n1, e2, n2) {
         n *= PI / 180
         return { x: cos(n) * cos(e), y: cos(n) * sin(e), z: sin(n) }
     }
-
     let a = getPoint(e1, n1)
     let b = getPoint(e2, n2)
     let c = hypot(a.x - b.x, a.y - b.y, a.z - b.z)
@@ -36,15 +34,10 @@ function welcometxmap() {
         };
         document.body.appendChild(script);
     }
-
 }
 
 function showWelcome() {
-    // 解决首次访问时ipLoacation属性未完成赋值
-    // if (!ipLoacation || !ipLoacation.result) {
-    //     ipLoacation = window.saveToLocal.get('ipLocation');
-    // }
-    let dist = getDistance(106.109138, 38.500360, ipLoacation.result.location.lng, ipLoacation.result.location.lat);
+    let dist = getDistance(106.15652, 38.49589, ipLoacation.result.location.lng, ipLoacation.result.location.lat);
     let pos = ipLoacation.result.ad_info.nation;
     let ip;
     let posdesc;
