@@ -303,4 +303,4 @@ rm.showRightMenu = function (e, n = 0, t = 0) {
 
 window.onload = addRightMenuClickEvent;
 // 如果使用了pjax在加上下面这行代码
-document.addEventListener('pjax:complete', addRightMenuClickEvent);
+// document.addEventListener('pjax:complete', addRightMenuClickEvent);

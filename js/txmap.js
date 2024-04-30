@@ -244,7 +244,7 @@ function showWelcome() {
     else if (date.getHours() >= 13 && date.getHours() < 17) timeChange = "<span>🕞 下午好，饮茶先啦~</span>";
     else if (date.getHours() >= 17 && date.getHours() < 19) timeChange = "<span>🚶‍♂️ 即将下班，记得按时吃饭~</span>";
     else if (date.getHours() >= 19 && date.getHours() < 24) timeChange = "<span>🌙 晚上好，夜生活嗨起来！</span>";
-    else timeChange = "<span class='welcome-time'>夜深了，早点休息，少熬夜~</span>";
+    else timeChange = "<span>🌙 夜深了，早点休息，少熬夜~</span>";
 
     try {
         //自定义文本和需要放的位置
@@ -256,4 +256,4 @@ function showWelcome() {
 }
 window.onload = welcometxmap;
 // 如果使用了pjax在加上下面这行代码
-document.addEventListener('pjax:complete', welcometxmap);
+// document.addEventListener('pjax:complete', welcometxmap);
