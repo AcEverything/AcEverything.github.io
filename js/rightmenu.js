@@ -300,5 +300,5 @@ rm.showRightMenu = function (e, n = 0, t = 0) {
         htmlDom.toggle('hide-aside');
         rm.hideRightMenu();
     };
-window.onload = addRightMenuClickEvent;
+addRightMenuClickEvent();
 document.addEventListener('pjax:complete', addRightMenuClickEvent);
