@@ -642,13 +642,12 @@ h6::before {
 /* 图标 样式 */
 
 
-/* .iconfont {
-    font-family: "iconfont" !important;
+.iconfont {
     /* 可以定义图标大小 */
-    /* font-style: normal;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale; */
-/* } */
+    font-weight: 400;
+    font-size: 19px;
+    line-height: 1;
+ }
 
 /* ----------------------- */
 /* 右键样式 */
