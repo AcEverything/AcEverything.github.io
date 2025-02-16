@@ -402,7 +402,7 @@ function welcometxmap() {
 }
 
 function showWelcome(ipLoacation) {
-    let dist = getDistance(106.15652, 38.49589, ipLoacation.result.location.lng, ipLoacation.result.location.lat);
+    let dist = getDistance(113.78247, 34.76527, ipLoacation.result.location.lng, ipLoacation.result.location.lat);
     let pos = ipLoacation.result.ad_info.nation;
     let ip;
     let posdesc;
